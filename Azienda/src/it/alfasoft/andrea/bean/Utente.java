@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
-import it.alfasoft.andrea.utility.Ruolo;
+
 import it.alfasoft.andrea.utility.ValidaDati;
 
 
