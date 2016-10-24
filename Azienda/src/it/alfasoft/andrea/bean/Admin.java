@@ -1,5 +1,7 @@
 package it.alfasoft.andrea.bean;
 
+import it.alfasoft.andrea.utility.ValidaDati;
+
 import java.io.Serializable;
 
 import javax.persistence.*;
@@ -7,7 +9,7 @@ import javax.persistence.*;
 
 @Entity
 @PrimaryKeyJoinColumn(name="id_utente")
-public class Admin extends Utente implements Serializable {
+public class Admin extends Utente implements Serializable,ValidaDati {
 
 	/**
 	 * 
@@ -34,6 +36,22 @@ public class Admin extends Utente implements Serializable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	@Override
+	public boolean isValid() {
+		boolean res=false;
+		
+		if(		(!nome.isEmpty() && nome!=null) &&
+				(!cognome.isEmpty() && cognome!=null) &&
+				(!username.isEmpty() && username!=null) &&
+				(!password.isEmpty() && password!=null) &&
+				(!livelloAccesso.isEmpty() && livelloAccesso!=null) &&
+				(ruolo=='a')
+			){
+			res=true;
+		}
+		return res;
 	}
 	
 	

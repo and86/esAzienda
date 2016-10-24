@@ -10,14 +10,25 @@
 <jsp:useBean id="messaggio" class="it.alfasoft.andrea.utility.MessaggioBean" scope="request" />
 
 <% 
-dipendente.setRuolo('d');
+String nome= request.getParameter("nome");
+String cognome= request.getParameter("cognome");
+String username= request.getParameter("username");
+String password= request.getParameter("password");
+String posizione= request.getParameter("posizione");
+String stipendio= request.getParameter("stipendio");
 
+Double stipendio_d=0.0;
+if(!stipendio.isEmpty() && stipendio!=null){
+stipendio_d=Double.parseDouble(stipendio);
+} 
+
+Dipendente d=new Dipendente(nome,cognome,username,password,'d',posizione,stipendio_d);
 Servizi s=new Servizi();
 
-if(dipendente.isValid() && s.leggiUtenteConUser(dipendente.getUsername())==null){
-	String password=s.codificaPass(dipendente.getPassword());
-	dipendente.setPassword(password);
-	s.registraDipendente(dipendente);
+if(d.isValid()&& s.leggiUtenteConUser(username)==null){
+	password=s.codificaPass(password);
+	d.setPassword(password);
+	s.registraDipendente(d);
 	messaggio.setMessaggio("Dipendente registrato");
 	
 	%>

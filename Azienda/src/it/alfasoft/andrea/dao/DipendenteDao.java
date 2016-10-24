@@ -74,7 +74,7 @@ public class DipendenteDao {
 					tx=session.getTransaction();
 					tx.begin();
 					
-					Query query = session.createQuery("from Utente where username=:userInserito");
+					Query query = session.createQuery("from Dipendente where username=:userInserito");
 					query.setString("userInserito", username);
 					d =(Dipendente) query.uniqueResult();
 					
@@ -131,7 +131,7 @@ public class DipendenteDao {
 							tx=session.getTransaction();
 							tx.begin();
 							
-							Query query = session.createQuery("from Utente"); 
+							Query query = session.createQuery("from Dipendente"); 
 							
 							dipendenti =query.list();
 							
