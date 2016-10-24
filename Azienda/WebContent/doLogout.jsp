@@ -5,4 +5,4 @@
         <%
     session.invalidate();
     %>
-        	<jsp:forward page="login.jsp"/>
+        	<jsp:forward page="Login.jsp"/>

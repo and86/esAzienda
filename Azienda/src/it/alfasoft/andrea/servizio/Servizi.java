@@ -47,6 +47,13 @@ public class Servizi {
 		return uDao.leggiUtenteConNomeCognome(nome, cognome);
 	}
 	
+	//metodo per eliminare un utente
+		public boolean eliminaUtente(Utente u) {
+			
+				return uDao.eliminaUtente(u);
+			}
+	
+	
 	//Liste
 	public List<Cliente> getListClienti(){
 		return cDao.leggiTuttiClienti();
