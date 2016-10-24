@@ -35,12 +35,12 @@
    <%=messaggio.getMessaggio() %>
    <form action="doRegistraDipendente.jsp" method="post">
    
-   Nome:<input type="text" name="nome" /><br>
-   Cognome:<input type="text" name="cognome" /><br>
-   Username:<input type="text" name="username" /><br>
-   Password:<input type="password" name="password"/><br>
-   Posizione:<input type="text" name="posizione" /><br>
-  Stipendio:<input type="number" name="stipendio"  /><br>
+   Nome:<input type="text" name="nome" required/><br>
+   Cognome:<input type="text" name="cognome" required/><br>
+   Username:<input type="text" name="username" required/><br>
+   Password:<input type="password" name="password" required/><br>
+   Posizione:<input type="text" name="posizione" required/><br>
+  Stipendio:<input type="number" name="stipendio"  required/><br>
    <input type="submit" value="Registra"  />
    
    </form>

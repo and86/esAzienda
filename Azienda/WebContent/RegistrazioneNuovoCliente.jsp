@@ -37,12 +37,13 @@
 			<%=messaggio.getMessaggio()%>
 			<form action="doRegistraCliente.jsp" method="post">
 
-				Nome:<input type="text" name="nome" /><br> 
-				Cognome:<input type="text" name="cognome" /><br> 
-				Username:<input type="text" name="username" /><br> 
-				Password:<input type="password" name="password" /><br> 
-				Ragione Sociale:<input type="text" name="ragSociale" /><br> 
-				Partita IVA:<input type="text" name="pIVA" /><br> <input type="submit" value="Registra" />
+				Nome:<input type="text" name="nome" required /><br> 
+				Cognome:<input type="text" name="cognome" required /><br> 
+				Username:<input type="text" name="username" required/><br> 
+				Password:<input type="password" name="password" required/><br> 
+				Ragione Sociale:<input type="text" name="ragSociale" required/><br> 
+				Partita IVA:<input type="text" name="pIVA" required /><br> 
+				<input type="submit" value="Registra" />
 
 			</form>
 
