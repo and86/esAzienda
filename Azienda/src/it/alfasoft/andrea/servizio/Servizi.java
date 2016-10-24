@@ -4,6 +4,7 @@ import java.util.List;
 
 import model.Rubrica;
 import model.Voce;
+import it.alfasoft.andrea.bean.Admin;
 import it.alfasoft.andrea.bean.Cliente;
 import it.alfasoft.andrea.bean.Dipendente;
 import it.alfasoft.andrea.bean.Utente;
@@ -53,6 +54,27 @@ public class Servizi {
 	
 	public List<Dipendente> getListDipendenti(){
 		return dDao.leggiTuttiDipendenti();
+	}
+	
+	//Trova utente da username
+	public Utente getUtente(String username) {
+		Utente u =uDao.leggiUtenteConUser(username);
+		return u;
+	}
+	
+	public Admin getAdmin(String username) {
+		Admin a =aDao.leggiAdminConUser(username);
+		return a;
+	}
+	
+	public Cliente getCliente(String username) {
+		Cliente c =cDao.leggiClienteConUser(username);
+		return c;
+	}
+	
+	public Dipendente getDipendente(String username) {
+		Dipendente d =dDao.leggiDipendenteConUser(username);
+		return d;
 	}
 	
 	

@@ -1,8 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 
-<jsp:useBean id="messaggio" class="it.alfasoft.andrea.utility.MessaggioBean" scope="request" />
 <jsp:useBean id="admin" class="it.alfasoft.andrea.bean.Admin" scope="session" />
+<jsp:useBean id="messaggio" class="it.alfasoft.andrea.utility.MessaggioBean" scope="request" />
+
+
+
+
+<%
+if(admin.isValid()){
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
@@ -44,4 +51,10 @@
   </div> <!--  end of container -->
 </body>
 </html>
+
+<%
+}else {
+	response.sendRedirect("Login.jsp");
+}
+%>
 

@@ -1,12 +1,19 @@
 <%@page import="it.alfasoft.andrea.bean.Utente"%>
+<%@page import="it.alfasoft.andrea.bean.Admin"%>
+<%@page import="it.alfasoft.andrea.bean.Cliente"%>
+<%@page import="it.alfasoft.andrea.bean.Dipendente"%>
 <%@page import="it.alfasoft.andrea.servizio.Servizi"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
-<jsp:useBean id="user" class="it.alfasoft.andrea.bean.Utente" scope="session" />
-<jsp:setProperty property="*" name="user" />
+<jsp:useBean id="user" class="it.alfasoft.andrea.bean.Utente" scope="request" />
+<jsp:useBean id="admin" class="it.alfasoft.andrea.bean.Admin" scope="session" />
+<jsp:useBean id="cliente" class="it.alfasoft.andrea.bean.Cliente" scope="session" />
+<jsp:useBean id="dipendente" class="it.alfasoft.andrea.bean.Dipendente" scope="session" />
 <jsp:useBean id="messaggio" class="it.alfasoft.andrea.utility.MessaggioBean" scope="request" />
 
+<jsp:setProperty property="*" name="user" />
 <%
 	Servizi s = new Servizi();
 
@@ -18,21 +25,31 @@
 	if (u != null && pass.equals(u.getPassword())) { //l'utente è nel database
 		user = u;
 		char ruolo = user.getRuolo();
+		user.setNome(u.getNome());
+		user.setCognome(u.getCognome());
+		user.setRuolo(ruolo);
 
 		switch (ruolo) {
 		case 'a':
+			Admin ad=s.getAdmin(usn);
+			session.setAttribute("admin", ad);
+			
 %>
 <jsp:forward page="HomePageAdmin.jsp" />
 <%
 	break;
 
 		case 'c':
+			Cliente cl=s.getCliente(usn);
+			session.setAttribute("cliente", cl);
 %>
 <jsp:forward page="HomePageCliente.jsp" />
 <%
 	break;
 
 		case 'd':
+			Dipendente dp=s.getDipendente(usn);
+			session.setAttribute("dipendente", dp);
 %>
 <jsp:forward page="HomePageDipendente.jsp" />
 <%
