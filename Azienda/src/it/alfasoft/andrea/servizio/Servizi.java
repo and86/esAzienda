@@ -2,13 +2,17 @@ package it.alfasoft.andrea.servizio;
 
 import java.util.List;
 
+import model.Rubrica;
+import model.Voce;
 import it.alfasoft.andrea.bean.Cliente;
 import it.alfasoft.andrea.bean.Dipendente;
 import it.alfasoft.andrea.bean.Utente;
 import it.alfasoft.andrea.dao.AdminDao;
 import it.alfasoft.andrea.dao.ClienteDao;
 import it.alfasoft.andrea.dao.DipendenteDao;
+import it.alfasoft.andrea.dao.RubricaDao;
 import it.alfasoft.andrea.dao.UtenteDao;
+import it.alfasoft.andrea.dao.VoceDao;
 import it.alfasoft.andrea.utility.CodificationOfPassword;
 
 public class Servizi {
@@ -17,6 +21,8 @@ public class Servizi {
 	AdminDao aDao=new AdminDao();
 	ClienteDao cDao=new ClienteDao();
 	DipendenteDao dDao=new DipendenteDao();
+	RubricaDao rDao=new RubricaDao();
+	VoceDao vDao=new VoceDao();
 	
 	//Metodi di registrazione
 	public boolean registraUtente(Utente u){
@@ -55,6 +61,41 @@ public class Servizi {
 
 		return CodificationOfPassword.codificatePass(pass);
 	}
+	
+	//Creazione rubrica
+	public boolean registraRubrica (String username){
+				
+		Rubrica r=new Rubrica(username);
+		return rDao.creaRubrica(r);		
+	}
+	
+	//Registrazione voce rubrica
+	public boolean registraVoce(Rubrica r,Voce v){
+		v.setRubrica(r);
+		r.aggiungiVoce(v);
+		boolean res=vDao.creaVoce(v);
+		
+		rDao.aggiornaRubrica(r);
+		
+		return res;
+	}
+	
+	public List<Voce> getVoci(Rubrica r){
+		List<Voce> lista = vDao.leggiTutteLeVoci(r);
+
+		return lista;
+	}
+	
+	//Eliminazione voce
+		public boolean eliminaVoce(Rubrica r, String nome, String cognome)
+		{
+			Voce v=vDao.leggiVoce(r, nome, cognome);
+			boolean result=vDao.eliminaVoce(v);
+			return result;
+		}
+
+	
+ 	
 	
 	
 	
