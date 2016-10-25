@@ -39,8 +39,8 @@ if(admin.isValid()){
 			<%=messaggio.getMessaggio()%>
 			<form action="doCancellaUtente.jsp" method="post">
 
-<!-- 				Nome:<input type="text" name="nome" required /><br>  -->
-<!-- 				Cognome:<input type="text" name="cognome" required /><br>  -->
+				Nome:<input type="text" name="nome" required /><br> 
+				Cognome:<input type="text" name="cognome" required /><br> 
 				Username:<input type="text" name="username" required/><br> 
 				Password:<input type="password" name="password" required/><br> 
 				 

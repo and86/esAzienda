@@ -16,7 +16,10 @@ Servizi s=new Servizi();
 
 Utente u=s.getUtente(user.getUsername());
 
-if(u!=null && u.getPassword().equals(s.codificaPass(user.getPassword())) && u.getRuolo()!='a'){	//nn posso cancellare un admin
+if(	u!=null && u.getNome().equals(user.getNome()) && 
+	u.getCognome().equals(user.getCognome()) && 
+	u.getPassword().equals(s.codificaPass(user.getPassword()))&&
+	u.getRuolo()!='a'){	//nn posso cancellare un admin
 	s.eliminaUtente(u);
 	messaggio.setMessaggio("Utente eliminato");
 	
